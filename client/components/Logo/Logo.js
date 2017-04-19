@@ -9,7 +9,12 @@ export default class Logo extends Component {
 
     render() {
         return (
-            <h1 className={ styles.logo } >logos</h1>
+            <div className={ styles.logo } >
+                <h1>useless app</h1>
+                <h2>some weird</h2>
+                <h2>things for</h2>
+                <h2>today</h2>
+            </div>
         );
     }
 }

@@ -1,3 +1,35 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
 .logo {
-  color: red;
+  @include logoFontSizeStyle($xSmallLogoFontSize);
+  box-sizing: border-box;
+  //position: fixed;
+  margin-top: $logoTopMargin;
+  margin-left: $logoLeftMargin;
+  width: $xSmallLogoHeight;
+  padding: $insideLogoPadding;
+  border-top: 2px solid $logoColor;
+  border-bottom: 2px solid $logoColor;
+  color: $logoColor;
+  text-align: right;
+
+  h1 { margin-bottom: $h1MarginBottom; }
+
+  @include mQ($smallDevices) {
+    @include logoFontSizeStyle($smallLogoFontSize);
+    width: $smallLogoHeight;
+  }
+  @include mQ($mediumDevices) {
+    @include logoFontSizeStyle($mediumLogoFontSize);
+    width: $mediumLogoHeight;
+  }
+  @include mQ($largeDevices) {
+    @include logoFontSizeStyle($largeLogoFontSize);
+    width: $largeLogoHeight;
+  }
+  @include mQ($xLargeDevices) {
+    @include logoFontSizeStyle($xLargeLogoFontSize);
+    width: $xLargeLogoHeight;
+  }
 }

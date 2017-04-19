@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import Logo from '../Logo/Logo';
+import styles from './nav.scss';
 
 export default class Nav extends Component {
 
@@ -10,7 +11,7 @@ export default class Nav extends Component {
 
     render() {
         return (
-            <nav>
+            <nav className={styles.nav}>
                 <Logo />
                 <ul>
                     <Link to="/">

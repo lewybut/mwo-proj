@@ -1,0 +1,36 @@
+@import "functions";
+
+// Small devices (landscape phones, 576px and up)
+$smallDevices:  576px;
+// Medium devices (tablets, 768px and up)
+$mediumDevices: 768px;
+// Large devices (desktops, 992px and up)
+$largeDevices:  992px;
+// Extra large devices (large desktops, 1200px and up)
+$xLargeDevices: 1200px;
+
+//logo
+$logoColor: #000;
+$insideLogoPadding:         5px;
+$h1MarginBottom:            $insideLogoPadding;
+$lowerThanSecondLogoHeader: 8px;
+$logoTopMargin:             20px;
+$logoLeftMargin:            20px;
+
+$xSmallLogoHeight:          170px;
+$smallLogoHeight:           210px;
+$mediumLogoHeight:          220px;
+$largeLogoHeight:           260px;
+$xLargeLogoHeight:          270px;
+
+$xSmallLogoFontSize:        29px;
+$smallLogoFontSize:         37px;
+$mediumLogoFontSize:        39px;
+$largeLogoFontSize:         47px;
+$xLargeLogoFontSize:        36px;
+
+$xSmallFullNavHeight: fullNavHeight($xSmallLogoFontSize, $insideLogoPadding, $lowerThanSecondLogoHeader, $logoTopMargin);
+$smallFullNavHeight:  fullNavHeight($xSmallLogoFontSize, $insideLogoPadding, $lowerThanSecondLogoHeader, $logoTopMargin);
+$mediumFullNavHeight: fullNavHeight($xSmallLogoFontSize, $insideLogoPadding, $lowerThanSecondLogoHeader, $logoTopMargin);
+$largeFullNavHeight:  fullNavHeight($xSmallLogoFontSize, $insideLogoPadding, $lowerThanSecondLogoHeader, $logoTopMargin);
+$xLargeFullNavHeight: fullNavHeight($xSmallLogoFontSize, $insideLogoPadding, $lowerThanSecondLogoHeader, $logoTopMargin);

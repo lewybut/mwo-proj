@@ -1,0 +1,6 @@
+@function fullNavHeight($fontSize, $padding, $scdLowerFont, $topPos) {
+  @return $padding * 3
+          + $fontSize
+          + $topPos
+          + ($fontSize - $scdLowerFont) * 3;
+}

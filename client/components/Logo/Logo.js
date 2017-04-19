@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import styles from './logo.scss';
 
-export default class About extends Component {
+export default class Logo extends Component {
 
     constructor(props) {
         super(props);
@@ -8,9 +9,7 @@ export default class About extends Component {
 
     render() {
         return (
-            <div>
-                ABOUT
-            </div>
+            <h1 className={ styles.logo } >logos</h1>
         );
     }
 }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
-import { footer } from '../styles/footer.scss';
+import Nav from '../Nav/Nav';
 
 export default class App extends Component {
 
@@ -13,12 +12,8 @@ export default class App extends Component {
         let { children } = this.props;
         return (
             <div>
-                <h1>Filter table</h1>
+                <Nav />
                 { children }
-                <footer className={footer}>
-                    <Link to="/">Filterable Table</Link>
-                    <Link to="/about">About</Link>
-                </footer>
             </div>
         );
     }

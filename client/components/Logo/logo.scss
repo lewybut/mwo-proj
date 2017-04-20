@@ -2,12 +2,11 @@
 @import "../../styles/mixins";
 
 .logo {
-  @include logoFontSizeStyle($xSmallLogoFontSize);
+  @include logoFontSizeStyle($smallLogoFontSize);
+  float: left;
   box-sizing: border-box;
-  //position: fixed;
-  margin-top: $logoTopMargin;
   margin-left: $logoLeftMargin;
-  width: $xSmallLogoHeight;
+  width: $smallLogoHeight;
   padding: $insideLogoPadding;
   border-top: 2px solid $logoColor;
   border-bottom: 2px solid $logoColor;
@@ -17,15 +16,15 @@
   h1 { margin-bottom: $h1MarginBottom; }
 
   @include mQ($smallDevices) {
-    @include logoFontSizeStyle($smallLogoFontSize);
+    @include logoFontSizeStyle($mediumLogoFontSize);
     width: $smallLogoHeight;
   }
   @include mQ($mediumDevices) {
-    @include logoFontSizeStyle($mediumLogoFontSize);
+    @include logoFontSizeStyle($largeLogoFontSize);
     width: $mediumLogoHeight;
   }
   @include mQ($largeDevices) {
-    @include logoFontSizeStyle($largeLogoFontSize);
+    @include logoFontSizeStyle($xLargeLogoFontSize);
     width: $largeLogoHeight;
   }
   @include mQ($xLargeDevices) {

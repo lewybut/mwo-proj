@@ -1,36 +1,36 @@
 @import "functions";
 
-// Small devices (landscape phones, 576px and up)
+// small devices (landscape phones, 576px and up)
 $smallDevices:  576px;
-// Medium devices (tablets, 768px and up)
+// medium devices (tablets, 768px and up)
 $mediumDevices: 768px;
-// Large devices (desktops, 992px and up)
+// large devices (desktops, 992px and up)
 $largeDevices:  992px;
-// Extra large devices (large desktops, 1200px and up)
+// extra large devices (large desktops, 1200px and up)
 $xLargeDevices: 1200px;
 
-//logo
-$logoColor: #000;
-$insideLogoPadding:         5px;
-$h1MarginBottom:            $insideLogoPadding;
-$lowerThanSecondLogoHeader: 8px;
-$logoTopMargin:             20px;
-$logoLeftMargin:            20px;
+// nav
+$navTopMargin:                20px;
+  // logo
+  $logoColor: #000;
+  $insideLogoPadding:         5px;
+  $h1MarginBottom:            $insideLogoPadding;
+  $lowerThanSecondLogoHeader: 8px;
+  $logoLeftMargin:            20px;
 
-$xSmallLogoHeight:          170px;
-$smallLogoHeight:           210px;
-$mediumLogoHeight:          220px;
-$largeLogoHeight:           260px;
-$xLargeLogoHeight:          270px;
+  $smallLogoHeight:           210px;
+  $mediumLogoHeight:          220px;
+  $largeLogoHeight:           260px;
+  $xLargeLogoHeight:          270px;
 
-$xSmallLogoFontSize:        29px;
-$smallLogoFontSize:         37px;
-$mediumLogoFontSize:        39px;
-$largeLogoFontSize:         47px;
-$xLargeLogoFontSize:        36px;
+  $smallLogoFontSize:         29px;
+  $mediumLogoFontSize:        37px;
+  $largeLogoFontSize:         39px;
+  $xLargeLogoFontSize:        47px;
 
-$xSmallFullNavHeight: fullNavHeight($xSmallLogoFontSize, $insideLogoPadding, $lowerThanSecondLogoHeader, $logoTopMargin);
-$smallFullNavHeight:  fullNavHeight($xSmallLogoFontSize, $insideLogoPadding, $lowerThanSecondLogoHeader, $logoTopMargin);
-$mediumFullNavHeight: fullNavHeight($xSmallLogoFontSize, $insideLogoPadding, $lowerThanSecondLogoHeader, $logoTopMargin);
-$largeFullNavHeight:  fullNavHeight($xSmallLogoFontSize, $insideLogoPadding, $lowerThanSecondLogoHeader, $logoTopMargin);
-$xLargeFullNavHeight: fullNavHeight($xSmallLogoFontSize, $insideLogoPadding, $lowerThanSecondLogoHeader, $logoTopMargin);
+  $smallFullNavHeight:  fullNavHeight($smallLogoFontSize, $insideLogoPadding, $lowerThanSecondLogoHeader, $navTopMargin);
+  $mediumFullNavHeight: fullNavHeight($smallLogoFontSize, $insideLogoPadding, $lowerThanSecondLogoHeader, $navTopMargin);
+  $largeFullNavHeight:  fullNavHeight($smallLogoFontSize, $insideLogoPadding, $lowerThanSecondLogoHeader, $navTopMargin);
+  $xLargeFullNavHeight: fullNavHeight($smallLogoFontSize, $insideLogoPadding, $lowerThanSecondLogoHeader, $navTopMargin);
+  // end logo
+// end nav

@@ -13,16 +13,13 @@ export default class Nav extends Component {
         return (
             <nav className={styles.nav}>
                 <Logo />
-                <ul>
-                    <Link to="/">
-                        <li>Home</li>
-                    </Link>
-                    <Link to="/login">
-                        <li>Login</li>
-                    </Link>
-                    <a href="#" target="_blank">
-                        <li>GitHub</li>
-                    </a>
+                <ul className={styles.navLinks}>
+                    <li>
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/login">Login</Link>
+                    </li>
                 </ul>
             </nav>
         );

@@ -2,10 +2,6 @@
 @import "../../styles/mixins";
 
 .container {
-  // TODO: remove
-  min-height: 100px;
-  background-color: indianred;
-  // end remove
   position: relative;
   top: $smallFullNavHeight - 20px;
 

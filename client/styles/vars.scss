@@ -29,8 +29,8 @@ $navTopMargin:                20px;
   $xLargeLogoFontSize:        47px;
 
   $smallFullNavHeight:  fullNavHeight($smallLogoFontSize, $insideLogoPadding, $lowerThanSecondLogoHeader, $navTopMargin);
-  $mediumFullNavHeight: fullNavHeight($smallLogoFontSize, $insideLogoPadding, $lowerThanSecondLogoHeader, $navTopMargin);
-  $largeFullNavHeight:  fullNavHeight($smallLogoFontSize, $insideLogoPadding, $lowerThanSecondLogoHeader, $navTopMargin);
-  $xLargeFullNavHeight: fullNavHeight($smallLogoFontSize, $insideLogoPadding, $lowerThanSecondLogoHeader, $navTopMargin);
+  $mediumFullNavHeight: fullNavHeight($mediumLogoFontSize, $insideLogoPadding, $lowerThanSecondLogoHeader, $navTopMargin);
+  $largeFullNavHeight:  fullNavHeight($largeLogoFontSize, $insideLogoPadding, $lowerThanSecondLogoHeader, $navTopMargin);
+  $xLargeFullNavHeight: fullNavHeight($xLargeLogoFontSize, $insideLogoPadding, $lowerThanSecondLogoHeader, $navTopMargin);
   // end logo
 // end nav

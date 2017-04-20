@@ -1,8 +1,8 @@
 import * as types from './types';
 
-export function filterTable(filter) {
+export function setCurrentTab(currentTab) {
     return {
-        type: types.FILTER,
-        filter
+        type: types.SET_CURRENT_TAB,
+        currentTab
     };
 }

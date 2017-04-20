@@ -27,8 +27,4 @@
     @include logoFontSizeStyle($xLargeLogoFontSize);
     width: $largeLogoHeight;
   }
-  @include mQ($xLargeDevices) {
-    @include logoFontSizeStyle($xLargeLogoFontSize);
-    width: $xLargeLogoHeight;
-  }
 }

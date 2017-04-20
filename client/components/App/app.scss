@@ -1,0 +1,21 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.container {
+  // TODO: remove
+  min-height: 100px;
+  background-color: indianred;
+  // end remove
+  position: relative;
+  top: $smallFullNavHeight - 20px;
+
+  @include mQ($smallDevices) {
+    top: $mediumFullNavHeight - 20px;
+  }
+  @include mQ($mediumDevices) {
+    top: $largeFullNavHeight - 20px;
+  }
+  @include mQ($largeDevices) {
+    top: $xLargeFullNavHeight - 20px;
+  }
+}

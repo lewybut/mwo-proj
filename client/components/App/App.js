@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Nav from '../Nav/Nav';
-import '../../styles/index.scss';
+import styles from './app.scss';
+import NavigationContainer from '../../containers/NavigationContainer/NavigationContainer';
 
 export default class App extends Component {
 
@@ -13,8 +13,10 @@ export default class App extends Component {
         let { children } = this.props;
         return (
             <div>
-                <Nav />
-                { children }
+                <NavigationContainer />
+                <section className={styles.container}>
+                    { children }
+                </section>
             </div>
         );
     }

@@ -1,0 +1,26 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.listItem {
+  padding: 0 10px 10px;
+  margin-left: 5px;
+  border-top: 2px solid transparent;
+
+  &:hover {
+    border-top: 2px solid $logoColor;
+  }
+
+  a {
+    color: $logoColor;
+    text-decoration: none;
+    font-size: $smallLogoFontSize - $lowerThanSecondLogoHeader;
+
+    @include mQ($mediumDevices) {
+      font-size: $largeLogoFontSize - $lowerThanSecondLogoHeader;
+    }
+  }
+}
+
+.active {
+  border-top: 2px solid $logoColor;
+}

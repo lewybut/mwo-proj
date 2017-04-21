@@ -16,12 +16,14 @@ const initialState = {
 
 export const navigation = (state = initialState, action) => {
     switch (action.type) {
+
         case types.SET_CURRENT_TAB:
             const { currentTab } = action;
             return {
                 ...state,
                 currentTab
             };
+
         default:
             return state;
     }

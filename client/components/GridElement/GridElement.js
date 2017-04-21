@@ -12,11 +12,12 @@ export default class Home extends Component {
         const { elementClassName } = this.props;
 
         return (
-            <article
+            <span
                 className={styles[`${elementClassName}`]}
             >
                 home
-            </article>
+                {/* <BgAnimation elementTitle="home" /> */}
+            </span>
         );
     }
 }

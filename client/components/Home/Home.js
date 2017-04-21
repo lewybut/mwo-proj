@@ -12,6 +12,10 @@ export default class Home extends Component {
         this.handleMouseLeave = this.handleMouseLeave.bind(this);
     }
 
+    componentWillMount() {
+        document.body.style.backgroundColor = 'azure';
+    }
+
     handleMouseEnter() {
         const { setHoverWidth } = this.props;
         setHoverWidth(true);
@@ -34,6 +38,7 @@ export default class Home extends Component {
                 <StackGrid
                     columnWidth={160}
                     gutterWidth={(isHovered) ? 20 : 10}
+                    gutterHeight={(isHovered) ? 20 : 10}
                 >
                     <GridElement key="1" elementClassName="yellow" {...otherProps} />
                     <GridElement key="2" elementClassName="green" {...otherProps} />

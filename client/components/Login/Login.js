@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import StackGrid from 'react-stack-grid';
+import Form from '../Form/Form';
 
 export default class About extends Component {
 
@@ -7,15 +7,16 @@ export default class About extends Component {
         super(props);
     }
 
+    componentWillMount() {
+        document.body.style.backgroundColor = 'tomato';
+    }
+
     render() {
         return (
-            <StackGrid
-                columnWidth={'33%'}
-            >
-                <div key="key1">Item 1</div>
-                <div key="key2">Item 2</div>
-                <div key="key3">Item 3</div>
-            </StackGrid>
+            <section>
+                <h2>Join our community!</h2>
+                <Form />
+            </section>
         );
     }
 }

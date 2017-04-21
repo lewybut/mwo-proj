@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import styles from './form.scss';
+import PropTypes from 'prop-types';
 import Input from '../Input/Input';
+import styles from './form.scss';
 
-export default class About extends Component {
+export default class Form extends Component {
 
     constructor(props) {
         super(props);
@@ -13,42 +14,33 @@ export default class About extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log('submit');
     }
 
     handleFocusInput(label) {
-        switch (label) {
-            case 'Name':
-
-                break;
-            case 'Email':
-
-                break;
-            case 'Nickname':
-
-                break;
-            case 'Password':
-
-                break;
-            default :
-                break;
-        }
+        const {setFocusedInput} = this.props;
+        setFocusedInput(label);
     }
 
     handleChangeInput(label, value) {
-        console.log(value);
+        const {
+            setNameInputValue,
+            setEmailInputValue,
+            setNicknameInputValue,
+            setPasswordInputValue
+        } = this.props;
+
         switch (label) {
             case 'Name':
-
+                setNameInputValue(value);
                 break;
             case 'Email':
-
+                setEmailInputValue(value);
                 break;
             case 'Nickname':
-
+                setNicknameInputValue(value);
                 break;
             case 'Password':
-
+                setPasswordInputValue(value);
                 break;
             default :
                 break;
@@ -56,47 +48,50 @@ export default class About extends Component {
     }
 
     render() {
+        const {inputs, focusedInput, loginComponent} = this.props;
+
+        const signUpInputs = inputs.map((input, i) =>
+            <Input
+                key={i}
+                inputType={input.inputType}
+                inputLabel={input.inputLabel}
+                isFocused={(focusedInput === input.inputLabel) ? true : false}
+                handleOnFocus={this.handleFocusInput}
+                handleOnChange={this.handleChangeInput}
+                autoFocus={(i === 0) ? true : false }
+            />
+        );
+
+        const loginInputs = inputs.map((input, i) =>
+            (i > 1) ? (
+                        <Input
+                            key={i}
+                            inputType={input.inputType}
+                            inputLabel={input.inputLabel}
+                            isFocused={(focusedInput === input.inputLabel) ? true : false}
+                            handleOnFocus={this.handleFocusInput}
+                            handleOnChange={this.handleChangeInput}
+                            autoFocus={(i === 2) ? true : false }
+                        />
+                    ) : ''
+        );
+
         return (
             <form
                 className={styles.form}
                 onSubmit={this.handleSubmit}
             >
-                <Input
-                    inputType={'text'}
-                    inputLabel={'Name'}
-                    isFocused={true}
-                    handleOnFocus={this.handleFocusInput}
-                    handleOnChange={this.handleChangeInput}
-                    autoFocus
-                />
-                <Input
-                    inputType={'email'}
-                    inputLabel={'Email'}
-                    isFocused={false}
-                    handleOnFocus={this.handleFocusInput}
-                    handleOnChange={this.handleChangeInput}
-                />
-                <Input
-                    inputType={'text'}
-                    inputLabel={'Nickname'}
-                    isFocused={false}
-                    handleOnFocus={this.handleFocusInput}
-                    handleOnChange={this.handleChangeInput}
-                />
-                <Input
-                    inputType={'password'}
-                    inputLabel={'Password'}
-                    isFocused={false}
-                    handleOnFocus={this.handleFocusInput}
-                    handleOnChange={this.handleChangeInput}
-                />
+
+                {
+                    (loginComponent) ? loginInputs : signUpInputs
+                }
 
                 {/* <label className={styles.labelStyle}>*/}
-                    {/* Gender:*/}
-                    {/* <select onChange={this.handleChangeGender}>*/}
-                        {/* <option value="girl">Girl</option>*/}
-                        {/* <option value="boy">Boy</option>*/}
-                    {/* </select>*/}
+                {/* Gender:*/}
+                {/* <select onChange={this.handleChangeGender}>*/}
+                {/* <option value="girl">Girl</option>*/}
+                {/* <option value="boy">Boy</option>*/}
+                {/* </select>*/}
                 {/* </label> */}
 
                 <input type="submit" value="Submit"/>
@@ -104,3 +99,18 @@ export default class About extends Component {
         );
     }
 }
+
+Form.propTypes = {
+    loginComponent: PropTypes.bool,
+    focusedInput: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    nickname: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    inputs: PropTypes.array.isRequired,
+    setFocusedInput: PropTypes.func.isRequired,
+    setNameInputValue: PropTypes.func.isRequired,
+    setEmailInputValue: PropTypes.func.isRequired,
+    setNicknameInputValue: PropTypes.func.isRequired,
+    setPasswordInputValue: PropTypes.func.isRequired
+};

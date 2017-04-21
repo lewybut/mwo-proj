@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Form from '../Form/Form';
 import styles from './login.scss';
+import FormContainer from '../../containers/FormContainer/FormContainer';
 
 export default class About extends Component {
 
@@ -16,7 +16,7 @@ export default class About extends Component {
         return (
             <section className={styles.loginSection}>
                 <h2>Join our community!</h2>
-                <Form />
+                <FormContainer loginComponent={true} />
             </section>
         );
     }

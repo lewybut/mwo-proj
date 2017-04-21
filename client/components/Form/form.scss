@@ -1,7 +1,11 @@
+@import "../../styles/vars";
 
-
-.labelStyle {
-    display: block;
-    width: 100%;
-    min-height: 60px;
+.form {
+    border-radius: 2px;
+    max-width: 600px;
+    margin: 0 20px;
+    padding: 5%;
+    background-color: $loginOppositeColor;
+    color: $loginColor;
 }
+

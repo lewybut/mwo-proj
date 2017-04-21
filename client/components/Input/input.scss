@@ -1,0 +1,40 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+$widthInput: 100% / 3;
+
+.inputContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 10px 0;
+    width: 100%;
+    min-height: $inputHeight;
+}
+
+.label {
+    @include labelStyle($unfocusedInputColor, $widthInput);
+}
+
+.labelFocused {
+    @include labelStyle($loginColor, $widthInput);
+}
+
+.input, .input:focus {
+    border: none;
+    outline: none;
+}
+
+.input {
+    box-sizing: border-box;
+    width: $widthInput * 2;
+    height: $inputHeight;
+
+    transition: border-bottom .2s ease-in-out;
+    border-bottom: 1px solid $unfocusedInputColor;
+
+    &:focus {
+        border-bottom: 1px solid $loginColor;
+    }
+}
+
+

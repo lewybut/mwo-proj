@@ -13,7 +13,7 @@ export default class Home extends Component {
     }
 
     componentWillMount() {
-        document.body.style.backgroundColor = 'azure';
+        document.body.style.backgroundColor = '#F0FFF0';
     }
 
     handleMouseEnter() {

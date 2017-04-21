@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Form from '../Form/Form';
+import styles from './login.scss';
 
 export default class About extends Component {
 
@@ -8,12 +9,12 @@ export default class About extends Component {
     }
 
     componentWillMount() {
-        document.body.style.backgroundColor = 'tomato';
+        document.body.style.backgroundColor = '#00bcd6';
     }
 
     render() {
         return (
-            <section>
+            <section className={styles.loginSection}>
                 <h2>Join our community!</h2>
                 <Form />
             </section>

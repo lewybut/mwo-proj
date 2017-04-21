@@ -1,5 +1,12 @@
 @import "functions";
 
+// color palette
+$homeColor: #F0FFF0;
+$homeOppositeColor: #000;
+$loginColor: #00bcd6;
+$loginOppositeColor: #FFF;
+
+
 // small devices (landscape phones, 576px and up)
 $smallDevices:  576px;
 // medium devices (tablets, 768px and up)
@@ -38,3 +45,8 @@ $navTopMargin:                20px;
 // grid
 $gridElementHeight: 300px;
 // end grid
+
+// form
+$inputHeight: 40px;
+$unfocusedInputColor: #DCDCDC;
+// end form

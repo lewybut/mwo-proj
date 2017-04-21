@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import styles from './form.scss';
+import Input from '../Input/Input';
 
 export default class About extends Component {
 
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChangeName = this.handleChangeName.bind(this);
-        this.handleChangeGender = this.handleChangeGender.bind(this);
-        this.handleChangeEmail = this.handleChangeEmail.bind(this);
-        this.handleChangeNickname = this.handleChangeNickname.bind(this);
-        this.handleChangePassword = this.handleChangePassword.bind(this);
+        this.handleFocusInput = this.handleFocusInput.bind(this);
+        this.handleChangeInput = this.handleChangeInput.bind(this);
     }
 
     handleSubmit(e) {
@@ -18,68 +16,91 @@ export default class About extends Component {
         console.log('submit');
     }
 
-    handleChangeName({ target: { value } }) {
-        console.log(value);
+    handleFocusInput(label) {
+        switch (label) {
+            case 'Name':
+
+                break;
+            case 'Email':
+
+                break;
+            case 'Nickname':
+
+                break;
+            case 'Password':
+
+                break;
+            default :
+                break;
+        }
     }
 
-    handleChangeGender({ target: { value } }) {
+    handleChangeInput(label, value) {
         console.log(value);
-    }
+        switch (label) {
+            case 'Name':
 
-    handleChangeEmail({ target: { value } }) {
-        console.log(value);
-    }
+                break;
+            case 'Email':
 
-    handleChangeNickname({ target: { value } }) {
-        console.log(value);
-    }
+                break;
+            case 'Nickname':
 
-    handleChangePassword({ target: { value } }) {
-        console.log(value);
+                break;
+            case 'Password':
+
+                break;
+            default :
+                break;
+        }
     }
 
     render() {
         return (
-            <section>
-                <form onSubmit={this.handleSubmit}>
-                    <label className={styles.labelStyle}>
-                        Name:
-                        <input
-                            type="text"
-                            onChange={this.handleChangeName}
-                        />
-                    </label>
-                    <label className={styles.labelStyle}>
-                        Gender:
-                        <select onChange={this.handleChangeGender}>
-                            <option value="girl">Girl</option>
-                            <option value="boy">Boy</option>
-                        </select>
-                    </label>
-                    <label className={styles.labelStyle}>
-                        Email:
-                        <input
-                            type="email"
-                            onChange={this.handleChangeEmail}
-                        />
-                    </label>
-                    <label className={styles.labelStyle}>
-                        Nickname:
-                        <input
-                            type="text"
-                            onChange={this.handleChangeNickname}
-                        />
-                    </label>
-                    <label className={styles.labelStyle}>
-                        Password:
-                        <input
-                            type="password"
-                            onChange={this.handleChangePassword}
-                        />
-                    </label>
-                    <input type="submit" value="Submit" />
-                </form>
-            </section>
+            <form
+                className={styles.form}
+                onSubmit={this.handleSubmit}
+            >
+                <Input
+                    inputType={'text'}
+                    inputLabel={'Name'}
+                    isFocused={true}
+                    handleOnFocus={this.handleFocusInput}
+                    handleOnChange={this.handleChangeInput}
+                    autoFocus
+                />
+                <Input
+                    inputType={'email'}
+                    inputLabel={'Email'}
+                    isFocused={false}
+                    handleOnFocus={this.handleFocusInput}
+                    handleOnChange={this.handleChangeInput}
+                />
+                <Input
+                    inputType={'text'}
+                    inputLabel={'Nickname'}
+                    isFocused={false}
+                    handleOnFocus={this.handleFocusInput}
+                    handleOnChange={this.handleChangeInput}
+                />
+                <Input
+                    inputType={'password'}
+                    inputLabel={'Password'}
+                    isFocused={false}
+                    handleOnFocus={this.handleFocusInput}
+                    handleOnChange={this.handleChangeInput}
+                />
+
+                {/* <label className={styles.labelStyle}>*/}
+                    {/* Gender:*/}
+                    {/* <select onChange={this.handleChangeGender}>*/}
+                        {/* <option value="girl">Girl</option>*/}
+                        {/* <option value="boy">Boy</option>*/}
+                    {/* </select>*/}
+                {/* </label> */}
+
+                <input type="submit" value="Submit"/>
+            </form>
         );
     }
 }

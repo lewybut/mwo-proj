@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Input from '../Input/Input';
 import styles from './form.scss';
 import FormField from '../FormField/FormField';
+import Input from '../Input/Input';
 
 export default class Form extends Component {
 
@@ -30,7 +30,6 @@ export default class Form extends Component {
             setNicknameInputValue,
             setPasswordInputValue
         } = this.props;
-
         switch (label) {
             case 'Name':
                 setNameInputValue(value);
@@ -53,9 +52,9 @@ export default class Form extends Component {
         const {inputs, focusedInput, loginComponent, invalidateInputs} = this.props;
 
         const signUpInputs = inputs.map((input, i) => {
-            let filterInvalidateInputs = invalidateInputs.filter(invInput => invInput === input.inputLabel);
+            let filterInvalidateInputs = [...invalidateInputs].filter(invInput => invInput === input.inputLabel);
             return (
-                <Input
+                <FormField
                     key={i}
                     inputType={input.inputType}
                     inputLabel={input.inputLabel}
@@ -69,8 +68,7 @@ export default class Form extends Component {
         });
 
         const loginInputs = inputs.map((input, i) => {
-            let filterInvalidateInputs = invalidateInputs.filter(invInput => invInput === input.inputLabel);
-
+            let filterInvalidateInputs = [...invalidateInputs].filter(invInput => invInput === input.inputLabel);
             return (i > 1) ? (
                 <FormField
                     key={i}
@@ -122,5 +120,5 @@ Form.propTypes = {
     setEmailInputValue: PropTypes.func.isRequired,
     setNicknameInputValue: PropTypes.func.isRequired,
     setPasswordInputValue: PropTypes.func.isRequired,
-    invalidateInputs: PropTypes.array.isRequired
+    invalidateInputs: PropTypes.object.isRequired
 };

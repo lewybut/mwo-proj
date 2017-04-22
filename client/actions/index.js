@@ -26,11 +26,11 @@ export const setEmailInputValue = (email) => ({
 });
 
 export const setNicknameInputValue = (nickname) => ({
-    type: types.SET_FOCUSED_INPUT,
+    type: types.SET_NICKNAME_INPUT_VALUE,
     nickname
 });
 
 export const setPasswordInputValue = (password) => ({
-    type: types.SET_FOCUSED_INPUT,
+    type: types.SET_PASSWORD_INPUT_VALUE,
     password
 });

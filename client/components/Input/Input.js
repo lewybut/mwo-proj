@@ -13,6 +13,7 @@ export default class Input extends Component {
     handleFocus() {
         const {handleOnFocus, inputLabel} = this.props;
         handleOnFocus(inputLabel);
+        console.log('focus');
     }
 
     handleChange({target: {value}}) {

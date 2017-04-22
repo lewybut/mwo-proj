@@ -31,10 +31,10 @@ export const form = (state = initialState, action) => {
 
         case types.SET_FOCUSED_INPUT:
             const {focusedInput} = action;
-            return {
+            return (focusedInput !== undefined) ? {
                 ...state,
                 focusedInput
-            };
+            } : state;
 
         case types.SET_NAME_INPUT_VALUE:
             const {name} = action;

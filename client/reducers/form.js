@@ -6,6 +6,7 @@ const initialState = {
     email: '',
     nickname: '',
     password: '',
+    invalidateInputs: [],
     inputs: [
         {
             inputType: 'text',
@@ -27,40 +28,66 @@ const initialState = {
 };
 
 export const form = (state = initialState, action) => {
-    switch (action.type) {
+    const {name, email, nickname, focusedInput} = action;
+    const {invalidateInputs, inputs} = state;
+    let newInvalidateInputs = [];
 
+    switch (action.type) {
         case types.SET_FOCUSED_INPUT:
-            const {focusedInput} = action;
             return (focusedInput !== undefined) ? {
                 ...state,
                 focusedInput
             } : state;
 
         case types.SET_NAME_INPUT_VALUE:
-            const {name} = action;
+            newInvalidateInputs = invalidateInputs.filter(x => x !== inputs[0].inputLabel);
+            if (name.length > 3 && regExpValidation(name)) {
+                return {
+                    ...state,
+                    invalidateInputs: newInvalidateInputs,
+                    name
+                };
+            }
             return {
                 ...state,
+                invalidateInputs: [...newInvalidateInputs, inputs[0].inputLabel],
                 name
             };
 
         case types.SET_EMAIL_INPUT_VALUE:
-            const {email} = action;
             return {
                 ...state,
                 email
             };
 
         case types.SET_NICKNAME_INPUT_VALUE:
-            const {nickname} = action;
+            newInvalidateInputs = invalidateInputs.filter(x => x !== inputs[2].inputLabel);
+            if (nickname.length > 3 && regExpValidation(nickname)) {
+                return {
+                    ...state,
+                    invalidateInputs: newInvalidateInputs,
+                    nickname
+                };
+            }
             return {
                 ...state,
+                invalidateInputs: [...newInvalidateInputs, inputs[2].inputLabel],
                 nickname
             };
 
         case types.SET_PASSWORD_INPUT_VALUE:
             const {password} = action;
+            newInvalidateInputs = invalidateInputs.filter(x => x !== inputs[3].inputLabel);
+            if (password.length > 3 && regExpValidation(password)) {
+                return {
+                    ...state,
+                    invalidateInputs: newInvalidateInputs,
+                    password
+                };
+            }
             return {
                 ...state,
+                invalidateInputs: [...newInvalidateInputs, inputs[3].inputLabel],
                 password
             };
 
@@ -69,3 +96,7 @@ export const form = (state = initialState, action) => {
     }
 };
 
+const regExpValidation = (str) => {
+    const pattern = new RegExp('^(^[^0-9])([\w a-z A-Z 0-9][^@#])$');
+    return pattern.test(str);
+};

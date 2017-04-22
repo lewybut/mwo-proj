@@ -28,14 +28,23 @@ export default class Input extends Component {
         const {inputType, autoFocus, inputValue} = this.props;
 
         return (
-            <input
-                className={styles.input}
-                type={inputType}
-                value={inputValue || ''}
-                autoFocus={(autoFocus) ? true : false}
-                onFocus={this.handleFocus}
-                onChange={this.handleChange}
-            />
+            <div className={styles.inputContainer}>
+            {
+                (inputValue) ?
+                    <input
+                        className={styles.input}
+                        type={inputType}
+                        value={inputValue || ''}
+                        autoFocus={(autoFocus) ? true : false}
+                    /> : <input
+                        className={styles.input}
+                        type={inputType}
+                        autoFocus={(autoFocus) ? true : false}
+                        onFocus={this.handleFocus}
+                        onChange={this.handleChange}
+                    />
+            }
+            </div>
         );
     }
 }

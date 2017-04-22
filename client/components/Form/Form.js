@@ -96,7 +96,7 @@ export default class Form extends Component {
                 {/* </select>*/}
                 {/* </label> */}
 
-                <Input inputType="submit" inputValue="Submit" />
+                {/* <Input inputType="submit" inputValue="Submit" />*/}
             </form>
         );
     }

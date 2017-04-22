@@ -1,16 +1,18 @@
 @import "../../styles/vars";
 @import "../../styles/mixins";
 
+.inputContainer {
+    @include inputContainerStyle;
+}
+
 .input, .input:focus {
     border: none;
     outline: none;
 }
 
 .input {
-    box-sizing: border-box;
-    width: $widthInput * 2;
-    height: $inputHeight;
-
+    @include inputContainerStyle;
+    width: 100%;
     transition: border-bottom .2s ease-in-out;
     border-bottom: 1px solid $unfocusedInputColor;
 

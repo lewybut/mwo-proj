@@ -50,33 +50,40 @@ export default class Form extends Component {
     }
 
     render() {
-        const {inputs, focusedInput, loginComponent} = this.props;
+        const {inputs, focusedInput, loginComponent, invalidateInputs} = this.props;
 
-        const signUpInputs = inputs.map((input, i) =>
-            <Input
-                key={i}
-                inputType={input.inputType}
-                inputLabel={input.inputLabel}
-                isFocused={(focusedInput === input.inputLabel) ? true : false}
-                handleOnFocus={this.handleFocusInput}
-                handleOnChange={this.handleChangeInput}
-                autoFocus={(i === 0) ? true : false }
-            />
-        );
+        const signUpInputs = inputs.map((input, i) => {
+            let filterInvalidateInputs = invalidateInputs.filter(invInput => invInput === input.inputLabel);
+            return (
+                <Input
+                    key={i}
+                    inputType={input.inputType}
+                    inputLabel={input.inputLabel}
+                    isFocused={(focusedInput === input.inputLabel) ? true : false}
+                    isCorrect={(filterInvalidateInputs > 0) ? false : true}
+                    handleOnFocus={this.handleFocusInput}
+                    handleOnChange={this.handleChangeInput}
+                    autoFocus={(i === 0) ? true : false }
+                />
+            );
+        });
 
-        const loginInputs = inputs.map((input, i) =>
-            (i > 1) ? (
-                        <FormField
-                            key={i}
-                            inputType={input.inputType}
-                            inputLabel={input.inputLabel}
-                            isFocused={(focusedInput === input.inputLabel) ? true : false}
-                            handleOnFocus={this.handleFocusInput}
-                            handleOnChange={this.handleChangeInput}
-                            autoFocus={(i === 2) ? true : false }
-                        />
-                    ) : ''
-        );
+        const loginInputs = inputs.map((input, i) => {
+            let filterInvalidateInputs = invalidateInputs.filter(invInput => invInput === input.inputLabel);
+
+            return (i > 1) ? (
+                <FormField
+                    key={i}
+                    inputType={input.inputType}
+                    inputLabel={input.inputLabel}
+                    isFocused={(focusedInput === input.inputLabel) ? true : false}
+                    isCorrect={(filterInvalidateInputs > 0) ? false : true}
+                    handleOnFocus={this.handleFocusInput}
+                    handleOnChange={this.handleChangeInput}
+                    autoFocus={(i === 2) ? true : false }
+                />
+            ) : '';
+        });
 
         return (
             <form
@@ -96,7 +103,7 @@ export default class Form extends Component {
                 {/* </select>*/}
                 {/* </label> */}
 
-                {/* <Input inputType="submit" inputValue="Submit" />*/}
+                <Input inputType="submit" inputValue="Submit" />
             </form>
         );
     }
@@ -114,5 +121,6 @@ Form.propTypes = {
     setNameInputValue: PropTypes.func.isRequired,
     setEmailInputValue: PropTypes.func.isRequired,
     setNicknameInputValue: PropTypes.func.isRequired,
-    setPasswordInputValue: PropTypes.func.isRequired
+    setPasswordInputValue: PropTypes.func.isRequired,
+    invalidateInputs: PropTypes.array.isRequired
 };

@@ -16,3 +16,7 @@
 .labelFocused {
     @include labelStyle($loginColor, $widthInput);
 }
+
+.labelIncorrect {
+    @include labelStyle(tomato, $widthInput);
+}

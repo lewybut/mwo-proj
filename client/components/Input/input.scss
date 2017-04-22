@@ -5,11 +5,6 @@
     @include inputContainerStyle;
 }
 
-.input, .input:focus {
-    border: none;
-    outline: none;
-}
-
 .input {
     @include inputContainerStyle;
     width: 100%;
@@ -21,4 +16,9 @@
     }
 }
 
-
+.incorrectInput {
+    @include inputContainerStyle;
+    width: 100%;
+    transition: border-bottom .2s ease-in-out;
+    border-bottom: 1px solid tomato;
+}

@@ -25,7 +25,7 @@ export default class Input extends Component {
     }
 
     render() {
-        const {inputType, autoFocus, inputValue} = this.props;
+        const {inputType, autoFocus, inputValue, isCorrect} = this.props;
 
         return (
             <div className={styles.inputContainer}>
@@ -36,8 +36,9 @@ export default class Input extends Component {
                         type={inputType}
                         value={inputValue || ''}
                         autoFocus={(autoFocus) ? true : false}
-                    /> : <input
-                        className={styles.input}
+                    /> :
+                    <input
+                        className={(isCorrect) ? styles.input : styles.incorrectInput}
                         type={inputType}
                         autoFocus={(autoFocus) ? true : false}
                         onFocus={this.handleFocus}
@@ -50,6 +51,7 @@ export default class Input extends Component {
 }
 
 Input.propTypes = {
+    isCorrect: PropTypes.bool,
     autoFocus: PropTypes.bool,
     inputValue: PropTypes.string,
     inputLabel: PropTypes.string,

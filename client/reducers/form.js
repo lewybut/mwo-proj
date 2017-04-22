@@ -28,8 +28,8 @@ const initialState = {
 };
 
 export const form = (state = initialState, action) => {
-    const {name, email, nickname, focusedInput} = action;
-    const {invalidateInputs, inputs} = state;
+    let {name, email, nickname, focusedInput} = action;
+    let {invalidateInputs, inputs} = state;
     let newInvalidateInputs = [];
 
     switch (action.type) {

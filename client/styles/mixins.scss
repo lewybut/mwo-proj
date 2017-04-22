@@ -1,4 +1,4 @@
-@import "vars";
+@import "./vars";
 
 @mixin mQ($args...) {
     @if length($args) == 1 {

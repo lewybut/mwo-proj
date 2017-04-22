@@ -10,15 +10,22 @@ export default class FormField extends Component {
     }
 
     render() {
-        const {inputLabel, isFocused, ...otherProps} = this.props;
+        const {inputLabel, isFocused, isCorrect, ...otherProps} = this.props;
 
         return (
             <div className={styles.inputContainer}>
-                <label className={(isFocused) ? styles.labelFocused : styles.label}>
-                    {inputLabel}:
-                </label>
+                {
+                    (isCorrect) ?
+                        <label className={(isFocused) ? styles.labelFocused : styles.label}>
+                            {inputLabel}:
+                        </label> :
+                        <label className={(isFocused) ? styles.labelFocused : styles.labelIncorrect}>
+                            {inputLabel}:
+                        </label>
+                }
                 <Input
                     inputLabel={inputLabel}
+                    isCorrect={isCorrect}
                     {...otherProps}
                 />
             </div>
@@ -28,5 +35,6 @@ export default class FormField extends Component {
 
 FormField.propTypes = {
     isFocused: PropTypes.bool.isRequired,
+    isCorrect: PropTypes.bool.isRequired,
     inputLabel: PropTypes.string.isRequired,
 };

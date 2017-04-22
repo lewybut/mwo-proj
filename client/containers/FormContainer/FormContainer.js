@@ -4,6 +4,7 @@ import * as actions from '../../actions/index';
 import Form from '../../components/Form/Form';
 
 const mapStateToProps = state => ({
+    invalidateInputs: state.form.invalidateInputs,
     focusedInput: state.form.focusedInput,
     name: state.form.name,
     email: state.form.email,

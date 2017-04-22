@@ -1,0 +1,18 @@
+@import "../../styles/vars";
+@import "../../styles/mixins";
+
+.inputContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 10px 0;
+    width: 100%;
+    min-height: $inputHeight;
+}
+
+.label {
+    @include labelStyle($unfocusedInputColor, $widthInput);
+}
+
+.labelFocused {
+    @include labelStyle($loginColor, $widthInput);
+}

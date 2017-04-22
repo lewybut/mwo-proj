@@ -16,7 +16,7 @@ export default class About extends Component {
         return (
             <section className={styles.loginSection}>
                 <h2>Join our community!</h2>
-                <FormContainer loginComponent={true} />
+                <FormContainer loginComponent />
             </section>
         );
     }

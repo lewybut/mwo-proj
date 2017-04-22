@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Input from '../Input/Input';
 import styles from './form.scss';
+import FormField from '../FormField/FormField';
 
 export default class Form extends Component {
 
@@ -14,6 +15,7 @@ export default class Form extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        console.log('submit');
     }
 
     handleFocusInput(label) {
@@ -64,7 +66,7 @@ export default class Form extends Component {
 
         const loginInputs = inputs.map((input, i) =>
             (i > 1) ? (
-                        <Input
+                        <FormField
                             key={i}
                             inputType={input.inputType}
                             inputLabel={input.inputLabel}
@@ -94,7 +96,7 @@ export default class Form extends Component {
                 {/* </select>*/}
                 {/* </label> */}
 
-                <input type="submit" value="Submit"/>
+                <Input inputType="submit" inputValue="Submit" />
             </form>
         );
     }

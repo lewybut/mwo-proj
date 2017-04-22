@@ -12,40 +12,39 @@ export default class Input extends Component {
 
     handleFocus() {
         const {handleOnFocus, inputLabel} = this.props;
-        handleOnFocus(inputLabel);
-        console.log('focus');
+        if (handleOnFocus) {
+            handleOnFocus(inputLabel);
+        }
     }
 
     handleChange({target: {value}}) {
         const {handleOnChange, inputLabel} = this.props;
-        handleOnChange(inputLabel, value);
+        if (handleOnChange) {
+            handleOnChange(inputLabel, value);
+        }
     }
 
     render() {
-        const {inputType, inputLabel, isFocused, autoFocus} = this.props;
+        const {inputType, autoFocus, inputValue} = this.props;
 
         return (
-            <div className={styles.inputContainer}>
-                <label className={(isFocused) ? styles.labelFocused : styles.label}>
-                    {inputLabel}:
-                </label>
-                <input
-                    className={styles.input}
-                    type={inputType}
-                    autoFocus={(autoFocus) ? true : false}
-                    onFocus={this.handleFocus}
-                    onChange={this.handleChange}
-                />
-            </div>
+            <input
+                className={styles.input}
+                type={inputType}
+                value={inputValue || ''}
+                autoFocus={(autoFocus) ? true : false}
+                onFocus={this.handleFocus}
+                onChange={this.handleChange}
+            />
         );
     }
 }
 
 Input.propTypes = {
     autoFocus: PropTypes.bool,
-    isFocused: PropTypes.bool.isRequired,
-    inputType: PropTypes.string.isRequired,
-    inputLabel: PropTypes.string.isRequired,
-    handleOnFocus: PropTypes.func.isRequired,
-    handleOnChange: PropTypes.func.isRequired
+    inputValue: PropTypes.string,
+    inputLabel: PropTypes.string,
+    handleOnFocus: PropTypes.func,
+    handleOnChange: PropTypes.func,
+    inputType: PropTypes.string.isRequired
 };

@@ -37,3 +37,14 @@
     width: $widthInput * 2;
     height: $inputHeight;
 }
+
+@mixin inputStyle($underlineColor) {
+    @include inputContainerStyle;
+    width: 100%;
+    transition: border-bottom .2s ease-in-out;
+    border-bottom: 1px solid $underlineColor;
+
+    &:focus {
+        border-bottom: 1px solid $loginColor;
+    }
+}

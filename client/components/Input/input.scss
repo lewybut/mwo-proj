@@ -6,23 +6,9 @@
 }
 
 .input {
-    @include inputContainerStyle;
-    width: 100%;
-    transition: border-bottom .2s ease-in-out;
-    border-bottom: 1px solid $unfocusedInputColor;
-
-    &:focus {
-        border-bottom: 1px solid $loginColor;
-    }
+    @include inputStyle($unfocusedInputColor);
 }
 
 .incorrectInput {
-    @include inputContainerStyle;
-    width: 100%;
-    transition: border-bottom .2s ease-in-out;
-    border-bottom: 1px solid tomato;
-
-    &:focus {
-        border-bottom: 1px solid $loginColor;
-    }
+    @include inputStyle(tomato);
 }

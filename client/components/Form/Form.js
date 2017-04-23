@@ -65,6 +65,7 @@ export default class Form extends Component {
                     inputLabel={input.inputLabel}
                     isFocused={focusedInput === input.inputLabel}
                     isCorrect={isCorrect.length === 0}
+                    inputMessage={input.inputMessage}
                     handleOnBlur={this.handleBlurInput}
                     handleOnFocus={this.handleFocusInput}
                     handleOnChange={this.handleChangeInput}
@@ -82,10 +83,12 @@ export default class Form extends Component {
                     inputLabel={input.inputLabel}
                     isFocused={focusedInput === input.inputLabel}
                     isCorrect={isCorrect.length === 0}
+                    inputMessage={input.inputMessage}
                     handleOnBlur={this.handleBlurInput}
                     handleOnFocus={this.handleFocusInput}
                     handleOnChange={this.handleChangeInput}
                     autoFocus={i === 2}
+                    loginComponent
                 />
             ) : '';
         });

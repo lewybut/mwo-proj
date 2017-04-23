@@ -10,32 +10,42 @@ export default class FormField extends Component {
     }
 
     render() {
-        const {inputLabel, isFocused, isCorrect, ...otherProps} = this.props;
+        const {inputLabel, isFocused, isCorrect, inputMessage, loginComponent, ...otherProps} = this.props;
         console.log(isCorrect);
 
         return (
-            <div className={styles.inputContainer}>
+            <div>
+                <div className={styles.inputContainer}>
+                    {
+                        (isCorrect) ?
+                            <label className={(isFocused) ? styles.labelFocused : styles.label}>
+                                {inputLabel}:
+                            </label> :
+                            <label className={(isFocused) ? styles.labelFocused : styles.labelIncorrect}>
+                                {inputLabel}:
+                            </label>
+                    }
+                    <Input
+                        inputLabel={inputLabel}
+                        isCorrect={isCorrect}
+                        {...otherProps}
+                    />
+                </div>
                 {
-                    (isCorrect) ?
-                        <label className={(isFocused) ? styles.labelFocused : styles.label}>
-                            {inputLabel}:
-                        </label> :
-                        <label className={(isFocused) ? styles.labelFocused : styles.labelIncorrect}>
-                            {inputLabel}:
-                        </label>
+                    (inputMessage && !loginComponent) ?
+                        <p className={styles.messageBox}>
+                            {inputMessage}
+                        </p> : null
                 }
-                <Input
-                    inputLabel={inputLabel}
-                    isCorrect={isCorrect}
-                    {...otherProps}
-                />
             </div>
         );
     }
 }
 
 FormField.propTypes = {
+    loginComponent: PropTypes.string,
+    inputMessage: PropTypes.string,
     isFocused: PropTypes.bool.isRequired,
     isCorrect: PropTypes.bool.isRequired,
-    inputLabel: PropTypes.string.isRequired,
+    inputLabel: PropTypes.string.isRequired
 };

@@ -26,7 +26,7 @@
     box-sizing: border-box;
     width: $width;
     height: $inputHeight;
-    margin-right: 10px;
+    margin-right: $labelMarginRight;
 
     transition: color .2s ease-in-out;
     color: darken($color, 10);
@@ -34,7 +34,7 @@
 
 @mixin inputContainerStyle {
     box-sizing: border-box;
-    width: $widthInput * 2;
+    width: $inputWidth * 2;
     height: $inputHeight;
 }
 

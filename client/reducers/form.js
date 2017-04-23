@@ -120,12 +120,9 @@ export const form = (state = initialState, action) => {
             newInputMessage = '';
             newInvalidateInputs = [...invalidateInputs].filter(x => x !== currentInput.inputLabel);
 
-            if (password.length < 4) {
+            if (password.length < 6) {
                 setToInvalidateInputs = [...invalidateInputs, currentInput.inputLabel];
-                newInputMessage = 'At least 4 chars!';
-            } else if (regExpValidation(password)) {
-                setToInvalidateInputs = [...invalidateInputs, currentInput.inputLabel];
-                newInputMessage = 'Do not use special chars!';
+                newInputMessage = 'At least 6 chars!';
             } else {
                 setToInvalidateInputs = newInvalidateInputs;
                 newInputMessage = '';

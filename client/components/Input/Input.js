@@ -37,23 +37,23 @@ export default class Input extends Component {
 
         return (
             <div className={styles.inputContainer}>
-            {
-                (inputValue) ?
-                    <input
-                        className={styles.input}
-                        type={inputType}
-                        value={inputValue || ''}
-                        autoFocus={(autoFocus) ? true : false}
-                    /> :
-                    <input
-                        className={(isCorrect) ? styles.input : styles.incorrectInput}
-                        type={inputType}
-                        autoFocus={(autoFocus) ? true : false}
-                        onBlur={this.handleBlur}
-                        onFocus={this.handleFocus}
-                        onChange={this.handleChange}
-                    />
-            }
+                {
+                    (inputValue) ?
+                        <input
+                            className={styles.input}
+                            type={inputType}
+                            value={inputValue || ''}
+                            autoFocus={(autoFocus) ? true : false}
+                        /> :
+                        <input
+                            className={(isCorrect) ? styles.input : styles.incorrectInput}
+                            type={inputType}
+                            autoFocus={(autoFocus) ? true : false}
+                            onBlur={this.handleBlur}
+                            onFocus={this.handleFocus}
+                            onChange={this.handleChange}
+                        />
+                }
             </div>
         );
     }

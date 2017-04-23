@@ -10,13 +10,19 @@
 }
 
 .label {
-    @include labelStyle($unfocusedInputColor, $widthInput);
+    @include labelStyle($unfocusedInputColor, $inputWidth);
 }
 
 .labelFocused {
-    @include labelStyle($loginColor, $widthInput);
+    @include labelStyle($loginColor, $inputWidth);
 }
 
 .labelIncorrect {
-    @include labelStyle(tomato, $widthInput);
+    @include labelStyle(tomato, $inputWidth);
+}
+
+.messageBox {
+    width: 100%;
+    padding-left: $inputWidth + $labelMarginRight;
+    color: $loginColor;
 }

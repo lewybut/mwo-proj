@@ -6,8 +6,16 @@ export default class Input extends Component {
 
     constructor(props) {
         super(props);
+        this.handleBlur = this.handleBlur.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
         this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleBlur() {
+        const {handleOnBlur} = this.props;
+        if (handleOnBlur) {
+            handleOnBlur();
+        }
     }
 
     handleFocus() {
@@ -41,6 +49,7 @@ export default class Input extends Component {
                         className={(isCorrect) ? styles.input : styles.incorrectInput}
                         type={inputType}
                         autoFocus={(autoFocus) ? true : false}
+                        onBlur={this.handleBlur}
                         onFocus={this.handleFocus}
                         onChange={this.handleChange}
                     />
@@ -55,6 +64,7 @@ Input.propTypes = {
     autoFocus: PropTypes.bool,
     inputValue: PropTypes.string,
     inputLabel: PropTypes.string,
+    handleOnBlur: PropTypes.func,
     handleOnFocus: PropTypes.func,
     handleOnChange: PropTypes.func,
     inputType: PropTypes.string.isRequired

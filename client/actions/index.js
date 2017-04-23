@@ -15,6 +15,10 @@ export const setFocusedInput = (focusedInput) => ({
     focusedInput
 });
 
+export const cleanFocusedInput = () => ({
+    type: types.CLEAN_FOCUSED_INPUT,
+});
+
 export const setNameInputValue = (name) => ({
     type: types.SET_NAME_INPUT_VALUE,
     name

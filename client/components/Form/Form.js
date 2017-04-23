@@ -9,13 +9,18 @@ export default class Form extends Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleBlurInput = this.handleBlurInput.bind(this);
         this.handleFocusInput = this.handleFocusInput.bind(this);
         this.handleChangeInput = this.handleChangeInput.bind(this);
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log('submit');
+    }
+
+    handleBlurInput() {
+        const {cleanFocusedInput} = this.props;
+        cleanFocusedInput();
     }
 
     handleFocusInput(label) {
@@ -60,6 +65,7 @@ export default class Form extends Component {
                     inputLabel={input.inputLabel}
                     isFocused={(focusedInput === input.inputLabel) ? true : false}
                     isCorrect={(filterInvalidateInputs > 0) ? false : true}
+                    handleOnBlur={this.handleBlurInput}
                     handleOnFocus={this.handleFocusInput}
                     handleOnChange={this.handleChangeInput}
                     autoFocus={(i === 0) ? true : false }
@@ -76,6 +82,7 @@ export default class Form extends Component {
                     inputLabel={input.inputLabel}
                     isFocused={(focusedInput === input.inputLabel) ? true : false}
                     isCorrect={(filterInvalidateInputs > 0) ? false : true}
+                    handleOnBlur={this.handleBlurInput}
                     handleOnFocus={this.handleFocusInput}
                     handleOnChange={this.handleChangeInput}
                     autoFocus={(i === 2) ? true : false }
@@ -116,6 +123,7 @@ Form.propTypes = {
     password: PropTypes.string.isRequired,
     inputs: PropTypes.array.isRequired,
     setFocusedInput: PropTypes.func.isRequired,
+    cleanFocusedInput: PropTypes.func.isRequired,
     setNameInputValue: PropTypes.func.isRequired,
     setEmailInputValue: PropTypes.func.isRequired,
     setNicknameInputValue: PropTypes.func.isRequired,

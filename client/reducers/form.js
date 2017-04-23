@@ -39,6 +39,12 @@ export const form = (state = initialState, action) => {
                 focusedInput
             } : state;
 
+        case types.CLEAN_FOCUSED_INPUT:
+            return {
+                ...state,
+                focusedInput: ''
+            };
+
         case types.SET_NAME_INPUT_VALUE:
             if (name.length > 3 && regExpValidation(name)) {
                 newInvalidateInputs = [...invalidateInputs].filter(x => x !== inputs[0].inputLabel);

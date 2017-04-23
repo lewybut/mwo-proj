@@ -69,9 +69,10 @@ export const form = (state = initialState, action) => {
         case types.SET_NICKNAME_INPUT_VALUE:
             if (nickname.length > 3 && regExpValidation(nickname)) {
                 newInvalidateInputs = [...invalidateInputs].filter(x => x !== inputs[2].inputLabel);
+                console.log('nickname:', newInvalidateInputs);
                 return {
                     ...state,
-                    invalidateInputs: new Set(...newInvalidateInputs),
+                    invalidateInputs: new Set(newInvalidateInputs),
                     nickname
                 };
             }
@@ -84,9 +85,10 @@ export const form = (state = initialState, action) => {
         case types.SET_PASSWORD_INPUT_VALUE:
             if (password.length > 6 && regExpValidation(password)) {
                 newInvalidateInputs = [...invalidateInputs].filter(x => x !== inputs[3].inputLabel);
+                console.log('password:', newInvalidateInputs);
                 return {
                     ...state,
-                    invalidateInputs: new Set(...newInvalidateInputs),
+                    invalidateInputs: new Set(newInvalidateInputs),
                     password
                 };
             }

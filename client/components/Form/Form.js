@@ -57,35 +57,35 @@ export default class Form extends Component {
         const {inputs, focusedInput, loginComponent, invalidateInputs} = this.props;
 
         const signUpInputs = inputs.map((input, i) => {
-            let filterInvalidateInputs = [...invalidateInputs].filter(invInput => invInput === input.inputLabel);
+            let isCorrect = [...invalidateInputs].filter(invInput => invInput === input.inputLabel);
             return (
                 <FormField
                     key={i}
                     inputType={input.inputType}
                     inputLabel={input.inputLabel}
-                    isFocused={(focusedInput === input.inputLabel) ? true : false}
-                    isCorrect={(filterInvalidateInputs > 0) ? false : true}
+                    isFocused={focusedInput === input.inputLabel}
+                    isCorrect={isCorrect.length === 0}
                     handleOnBlur={this.handleBlurInput}
                     handleOnFocus={this.handleFocusInput}
                     handleOnChange={this.handleChangeInput}
-                    autoFocus={(i === 0) ? true : false }
+                    autoFocus={i === 0}
                 />
             );
         });
 
         const loginInputs = inputs.map((input, i) => {
-            let filterInvalidateInputs = [...invalidateInputs].filter(invInput => invInput === input.inputLabel);
+            let isCorrect = [...invalidateInputs].filter(invInput => invInput === input.inputLabel);
             return (i > 1) ? (
                 <FormField
                     key={i}
                     inputType={input.inputType}
                     inputLabel={input.inputLabel}
-                    isFocused={(focusedInput === input.inputLabel) ? true : false}
-                    isCorrect={(filterInvalidateInputs > 0) ? false : true}
+                    isFocused={focusedInput === input.inputLabel}
+                    isCorrect={isCorrect.length === 0}
                     handleOnBlur={this.handleBlurInput}
                     handleOnFocus={this.handleFocusInput}
                     handleOnChange={this.handleChangeInput}
-                    autoFocus={(i === 2) ? true : false }
+                    autoFocus={i === 2}
                 />
             ) : '';
         });

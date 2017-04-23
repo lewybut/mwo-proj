@@ -11,6 +11,7 @@ export default class FormField extends Component {
 
     render() {
         const {inputLabel, isFocused, isCorrect, ...otherProps} = this.props;
+        console.log(isCorrect);
 
         return (
             <div className={styles.inputContainer}>

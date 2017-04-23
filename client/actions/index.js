@@ -38,3 +38,9 @@ export const setPasswordInputValue = (password) => ({
     type: types.SET_PASSWORD_INPUT_VALUE,
     password
 });
+
+export const validateInput = (inputLabelToValidate, currentInputValue) => ({
+    type: types.VALIDATE_INPUT,
+    inputLabelToValidate,
+    currentInputValue
+});

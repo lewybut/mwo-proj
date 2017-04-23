@@ -18,9 +18,10 @@ export default class Form extends Component {
         e.preventDefault();
     }
 
-    handleBlurInput() {
-        const {cleanFocusedInput} = this.props;
+    handleBlurInput(label, currentInputValue) {
+        const {cleanFocusedInput, validateInput} = this.props;
         cleanFocusedInput();
+        validateInput(label, currentInputValue);
     }
 
     handleFocusInput(label) {
@@ -125,6 +126,7 @@ Form.propTypes = {
     nickname: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     inputs: PropTypes.array.isRequired,
+    validateInput: PropTypes.func.isRequired,
     setFocusedInput: PropTypes.func.isRequired,
     cleanFocusedInput: PropTypes.func.isRequired,
     setNameInputValue: PropTypes.func.isRequired,

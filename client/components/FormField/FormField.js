@@ -11,7 +11,6 @@ export default class FormField extends Component {
 
     render() {
         const {inputLabel, isFocused, isCorrect, inputMessage, loginComponent, ...otherProps} = this.props;
-        console.log(isCorrect);
 
         return (
             <div>
@@ -43,7 +42,7 @@ export default class FormField extends Component {
 }
 
 FormField.propTypes = {
-    loginComponent: PropTypes.string,
+    loginComponent: PropTypes.bool,
     inputMessage: PropTypes.string,
     isFocused: PropTypes.bool.isRequired,
     isCorrect: PropTypes.bool.isRequired,

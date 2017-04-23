@@ -32,12 +32,13 @@ const initialState = {
 };
 
 export const form = (state = initialState, action) => {
-    let {name, email, nickname, password, focusedInput} = action;
+    let {name, email, nickname, password, focusedInput, inputLabelToValidate, currentInputValue} = action;
     let {invalidateInputs, inputs} = state;
     let newInvalidateInputs;
     let currentInput;
     let setToInvalidateInputs;
     let newInputMessage;
+    let indexOfCurrentInput;
 
     switch (action.type) {
         case types.SET_FOCUSED_INPUT:
@@ -53,31 +54,9 @@ export const form = (state = initialState, action) => {
             };
 
         case types.SET_NAME_INPUT_VALUE:
-            currentInput = inputs[0];
-            setToInvalidateInputs = [];
-            newInputMessage = '';
-            newInvalidateInputs = [...invalidateInputs].filter(x => x !== currentInput.inputLabel);
-
-            if (name.length < 4) {
-                setToInvalidateInputs = [...invalidateInputs, currentInput.inputLabel];
-                newInputMessage = 'At least 4 chars!';
-            } else if (regExpValidation(name)) {
-                setToInvalidateInputs = [...invalidateInputs, currentInput.inputLabel];
-                newInputMessage = 'Do not use special chars!';
-            } else {
-                setToInvalidateInputs = newInvalidateInputs;
-                newInputMessage = '';
-            }
-            inputs[0] = {
-                ...currentInput,
-                inputMessage: newInputMessage
-            };
-
             return {
                 ...state,
-                name,
-                inputs,
-                invalidateInputs: new Set(setToInvalidateInputs)
+                name
             };
 
         case types.SET_EMAIL_INPUT_VALUE:
@@ -87,54 +66,49 @@ export const form = (state = initialState, action) => {
             };
 
         case types.SET_NICKNAME_INPUT_VALUE:
-            currentInput = inputs[2];
-            setToInvalidateInputs = [];
+            return {
+                ...state,
+                nickname
+            };
+
+        case types.SET_PASSWORD_INPUT_VALUE:
+            return {
+                ...state,
+                password
+            };
+
+        case types.VALIDATE_INPUT:
+            indexOfCurrentInput = inputs.findIndex((input) => input.inputLabel === inputLabelToValidate);
+            currentInput = inputs[indexOfCurrentInput];
             newInputMessage = '';
+            setToInvalidateInputs = [...invalidateInputs, currentInput.inputLabel];
             newInvalidateInputs = [...invalidateInputs].filter(x => x !== currentInput.inputLabel);
 
-            if (nickname.length < 4) {
-                setToInvalidateInputs = [...invalidateInputs, currentInput.inputLabel];
+            if (isEmail(inputLabelToValidate) && regExpEmailValidation(currentInputValue)) {
+                setToInvalidateInputs = newInvalidateInputs;
+                newInputMessage = '';
+            } else if (isEmail(inputLabelToValidate) && !regExpEmailValidation(currentInputValue)) {
+                newInputMessage = 'Check your email address!';
+            } else if (isPassword(inputLabelToValidate) && currentInputValue.length < 6) {
+                newInputMessage = 'At least 6 chars!';
+            } else if (isNameOrNickname(inputLabelToValidate) && currentInputValue.length < 4) {
                 newInputMessage = 'At least 4 chars!';
-            } else if (regExpValidation(nickname)) {
-                setToInvalidateInputs = [...invalidateInputs, currentInput.inputLabel];
+            } else if (!isPassword(inputLabelToValidate)
+                        && !isEmail(inputLabelToValidate)
+                        && regExpValidation(currentInputValue)
+            ) {
                 newInputMessage = 'Do not use special chars!';
             } else {
                 setToInvalidateInputs = newInvalidateInputs;
                 newInputMessage = '';
             }
-            inputs[2] = {
+            inputs[indexOfCurrentInput] = {
                 ...currentInput,
                 inputMessage: newInputMessage
             };
 
             return {
                 ...state,
-                nickname,
-                inputs,
-                invalidateInputs: new Set(setToInvalidateInputs)
-            };
-
-        case types.SET_PASSWORD_INPUT_VALUE:
-            currentInput = inputs[3];
-            setToInvalidateInputs = [];
-            newInputMessage = '';
-            newInvalidateInputs = [...invalidateInputs].filter(x => x !== currentInput.inputLabel);
-
-            if (password.length < 6) {
-                setToInvalidateInputs = [...invalidateInputs, currentInput.inputLabel];
-                newInputMessage = 'At least 6 chars!';
-            } else {
-                setToInvalidateInputs = newInvalidateInputs;
-                newInputMessage = '';
-            }
-            inputs[3] = {
-                ...currentInput,
-                inputMessage: newInputMessage
-            };
-
-            return {
-                ...state,
-                password,
                 inputs,
                 invalidateInputs: new Set(setToInvalidateInputs)
             };
@@ -145,6 +119,22 @@ export const form = (state = initialState, action) => {
 };
 
 const regExpValidation = (str) => {
-    const pattern = new RegExp('^[a-zA-Z0-9\d\\-\\_.,\s]+$');
+    let pattern = new RegExp('^[a-zA-Z0-9\d\\-\\_\s]+$');
     return !pattern.test(str);
+};
+
+const regExpEmailValidation = (email) => {
+    return /[^\s@]+@[^\s@]+\.[^\s@]+/.test(email);
+};
+
+const isPassword = (label) => {
+    return label === 'Password';
+};
+
+const isEmail = (label) => {
+    return label === 'Email';
+};
+
+const isNameOrNickname = (label) => {
+    return label === 'Name' || label === 'Nickname';
 };

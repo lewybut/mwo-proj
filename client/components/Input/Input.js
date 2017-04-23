@@ -11,10 +11,10 @@ export default class Input extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleBlur() {
-        const {handleOnBlur} = this.props;
+    handleBlur({target: {value}}) {
+        const {handleOnBlur, inputLabel} = this.props;
         if (handleOnBlur) {
-            handleOnBlur();
+            handleOnBlur(inputLabel, value);
         }
     }
 

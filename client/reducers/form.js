@@ -10,19 +10,23 @@ const initialState = {
     inputs: [
         {
             inputType: 'text',
-            inputLabel: 'Name'
+            inputLabel: 'Name',
+            inputMessage: ''
         },
         {
             inputType: 'email',
-            inputLabel: 'Email'
+            inputLabel: 'Email',
+            inputMessage: ''
         },
         {
             inputType: 'text',
-            inputLabel: 'Nickname'
+            inputLabel: 'Nickname',
+            inputMessage: ''
         },
         {
             inputType: 'password',
-            inputLabel: 'Password'
+            inputLabel: 'Password',
+            inputMessage: ''
         },
     ]
 };
@@ -30,7 +34,10 @@ const initialState = {
 export const form = (state = initialState, action) => {
     let {name, email, nickname, password, focusedInput} = action;
     let {invalidateInputs, inputs} = state;
-    let newInvalidateInputs = [];
+    let newInvalidateInputs;
+    let currentInput;
+    let setToInvalidateInputs;
+    let newInputMessage;
 
     switch (action.type) {
         case types.SET_FOCUSED_INPUT:
@@ -46,18 +53,31 @@ export const form = (state = initialState, action) => {
             };
 
         case types.SET_NAME_INPUT_VALUE:
-            if (name.length > 3 && regExpValidation(name)) {
-                newInvalidateInputs = [...invalidateInputs].filter(x => x !== inputs[0].inputLabel);
-                return {
-                    ...state,
-                    invalidateInputs: new Set(...newInvalidateInputs),
-                    name
-                };
+            currentInput = inputs[0];
+            setToInvalidateInputs = [];
+            newInputMessage = '';
+            newInvalidateInputs = [...invalidateInputs].filter(x => x !== currentInput.inputLabel);
+
+            if (name.length < 4) {
+                setToInvalidateInputs = [...invalidateInputs, currentInput.inputLabel];
+                newInputMessage = 'At least 4 chars!';
+            } else if (regExpValidation(name)) {
+                setToInvalidateInputs = [...invalidateInputs, currentInput.inputLabel];
+                newInputMessage = 'Do not use special chars!';
+            } else {
+                setToInvalidateInputs = newInvalidateInputs;
+                newInputMessage = '';
             }
+            inputs[0] = {
+                ...currentInput,
+                inputMessage: newInputMessage
+            };
+
             return {
                 ...state,
-                invalidateInputs: new Set([...invalidateInputs, inputs[0].inputLabel]),
-                name
+                name,
+                inputs,
+                invalidateInputs: new Set(setToInvalidateInputs)
             };
 
         case types.SET_EMAIL_INPUT_VALUE:
@@ -67,35 +87,59 @@ export const form = (state = initialState, action) => {
             };
 
         case types.SET_NICKNAME_INPUT_VALUE:
-            if (nickname.length > 3 && regExpValidation(nickname)) {
-                newInvalidateInputs = [...invalidateInputs].filter(x => x !== inputs[2].inputLabel);
-                console.log('nickname:', newInvalidateInputs);
-                return {
-                    ...state,
-                    invalidateInputs: new Set(newInvalidateInputs),
-                    nickname
-                };
+            currentInput = inputs[2];
+            setToInvalidateInputs = [];
+            newInputMessage = '';
+            newInvalidateInputs = [...invalidateInputs].filter(x => x !== currentInput.inputLabel);
+
+            if (nickname.length < 4) {
+                setToInvalidateInputs = [...invalidateInputs, currentInput.inputLabel];
+                newInputMessage = 'At least 4 chars!';
+            } else if (regExpValidation(nickname)) {
+                setToInvalidateInputs = [...invalidateInputs, currentInput.inputLabel];
+                newInputMessage = 'Do not use special chars!';
+            } else {
+                setToInvalidateInputs = newInvalidateInputs;
+                newInputMessage = '';
             }
+            inputs[2] = {
+                ...currentInput,
+                inputMessage: newInputMessage
+            };
+
             return {
                 ...state,
-                invalidateInputs: new Set([...invalidateInputs, inputs[2].inputLabel]),
-                nickname
+                nickname,
+                inputs,
+                invalidateInputs: new Set(setToInvalidateInputs)
             };
 
         case types.SET_PASSWORD_INPUT_VALUE:
-            if (password.length > 6 && regExpValidation(password)) {
-                newInvalidateInputs = [...invalidateInputs].filter(x => x !== inputs[3].inputLabel);
-                console.log('password:', newInvalidateInputs);
-                return {
-                    ...state,
-                    invalidateInputs: new Set(newInvalidateInputs),
-                    password
-                };
+            currentInput = inputs[3];
+            setToInvalidateInputs = [];
+            newInputMessage = '';
+            newInvalidateInputs = [...invalidateInputs].filter(x => x !== currentInput.inputLabel);
+
+            if (password.length < 4) {
+                setToInvalidateInputs = [...invalidateInputs, currentInput.inputLabel];
+                newInputMessage = 'At least 4 chars!';
+            } else if (regExpValidation(password)) {
+                setToInvalidateInputs = [...invalidateInputs, currentInput.inputLabel];
+                newInputMessage = 'Do not use special chars!';
+            } else {
+                setToInvalidateInputs = newInvalidateInputs;
+                newInputMessage = '';
             }
+            inputs[3] = {
+                ...currentInput,
+                inputMessage: newInputMessage
+            };
+
             return {
                 ...state,
-                invalidateInputs: new Set([...invalidateInputs, inputs[3].inputLabel]),
-                password
+                password,
+                inputs,
+                invalidateInputs: new Set(setToInvalidateInputs)
             };
 
         default:
@@ -105,5 +149,5 @@ export const form = (state = initialState, action) => {
 
 const regExpValidation = (str) => {
     const pattern = new RegExp('^[a-zA-Z0-9\d\\-\\_.,\s]+$');
-    return pattern.test(str);
+    return !pattern.test(str);
 };

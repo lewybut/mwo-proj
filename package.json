@@ -9,6 +9,7 @@
     "build": "rimraf dist && webpack --config ./webpack.production.config.js --progress --profile --colors"
   },
   "dependencies": {
+    "axios": "^0.16.1",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",

@@ -10,5 +10,5 @@
 }
 
 .incorrectInput {
-    @include inputStyle(tomato);
+    @include inputStyle($inputInvalidateColor);
 }

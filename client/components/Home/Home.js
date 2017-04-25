@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import StackGrid from 'react-stack-grid';
-import styles from './home.scss';
 import GridElement from '../GridElement/GridElement';
+import styles from './home.scss';
 
 export default class Home extends Component {
 

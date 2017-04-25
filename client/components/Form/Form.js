@@ -15,7 +15,13 @@ export default class Form extends Component {
     }
 
     handleSubmit(e) {
+        // let {loginComponent, name, email, nickname, password} = this.props;
         e.preventDefault();
+        // if (loginComponent) {
+        //
+        // } else {
+        //
+        // }
     }
 
     handleBlurInput(label, currentInputValue) {

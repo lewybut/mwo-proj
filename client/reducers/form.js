@@ -119,8 +119,8 @@ export const form = (state = initialState, action) => {
 };
 
 const regExpValidation = (str) => {
-    let pattern = new RegExp('^[a-zA-Z0-9\d\\-\\_\s]+$');
-    return !pattern.test(str);
+    // let pattern = new RegExp('^[a-zA-Z0-9\d\\-\\_\s]+$');
+    return !/^[a-zA-Z0-9\d\\-\\_\s]+$/.test(str);
 };
 
 const regExpEmailValidation = (email) => {

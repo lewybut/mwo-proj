@@ -18,11 +18,11 @@
 }
 
 .labelIncorrect {
-    @include labelStyle(tomato, $inputWidth);
+    @include labelStyle($inputInvalidateColor, $inputWidth);
 }
 
 .messageBox {
     width: 100%;
     padding-left: $inputWidth + $labelMarginRight;
-    color: tomato;
+    color: $inputInvalidateColor;
 }

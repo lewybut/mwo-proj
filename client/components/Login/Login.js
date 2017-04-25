@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import styles from './login.scss';
 import FormContainer from '../../containers/FormContainer/FormContainer';
+import styles from './login.scss';
 
-export default class About extends Component {
+export default class Login extends Component {
 
     constructor(props) {
         super(props);

@@ -8,7 +8,7 @@ import Root from './containers/Root/Root';
 import './styles/reset.scss';
 import './styles/index.scss';
 
-const store = configureStore();
+export const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
 render(

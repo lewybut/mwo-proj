@@ -9,6 +9,10 @@ export default class App extends Component {
         super(props);
     }
 
+    add(x, y) {
+        return x + y;
+    }
+
     render() {
         let { children } = this.props;
         return (

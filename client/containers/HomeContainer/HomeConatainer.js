@@ -1,11 +1,10 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../../actions/navigationActions';
-import Navigation from '../../components/Navigation/Navigation';
+import * as actions from '../../actions/homeActions';
+import Home from '../../components/Home/Home';
 
 const mapStateToProps = state => ({
-    currentTab: state.navigation.currentTab,
-    links: state.navigation.links
+    counter: state.home.counter
 });
 
 const mapDispatchToProps = dispatch => {
@@ -15,4 +14,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Navigation);
+)(Home);
